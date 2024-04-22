@@ -63,7 +63,7 @@ export default function DashBoard() {
       <div className="bg-gray-200 w-full h-auto pt-10 pl-28">
         <WeeklyData />
         <div className="font-bold text-black text-2xl mt-6">
-          Today's Highlight
+          {`Today's Highlight`}
         </div>
         <TodayHighlights
           currentData={currentData}
