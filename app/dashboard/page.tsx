@@ -43,10 +43,10 @@ export default function DashBoard() {
   useEffect(() => {
     getMyLocation();
     // @ts-ignore
-    dispatch(fetchCurrenWeather({ lat: 23.1610353, lon: 79.9027559 }));
+    dispatch(fetchCurrenWeather(position));
     // @ts-ignore
-    dispatch(fetchCurrentAirPollution({ lat: 23.1610353, lon: 79.9027559 }));
-  }, []);
+    dispatch(fetchCurrentAirPollution(position));
+  }, [dispatch, position]);
 
   return (
     <main className="flex  h-auto flex-row ">
