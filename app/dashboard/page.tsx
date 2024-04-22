@@ -44,18 +44,23 @@ export default function DashBoard() {
     if (!position.latitude && !position.longitude) {
       getMyLocation();
     }
+  }, []);
+
+  useEffect(() => {
     if (position.latitude && position.longitude) {
       dispatch(
+        // @ts-ignore
         fetchCurrenWeather({ lat: position.latitude, lon: position.longitude })
       );
       dispatch(
+        // @ts-ignore
         fetchCurrentAirPollution({
           lat: position.latitude,
           lon: position.longitude,
         })
       );
     }
-  }, [dispatch, position]);
+  }, [dispatch, position.latitude, position.longitude]);
 
   return (
     <main className="flex  h-auto flex-row ">
