@@ -41,11 +41,20 @@ export default function DashBoard() {
   };
 
   useEffect(() => {
-    getMyLocation();
-    // @ts-ignore
-    dispatch(fetchCurrenWeather(position));
-    // @ts-ignore
-    dispatch(fetchCurrentAirPollution(position));
+    if (!position.latitude && !position.longitude) {
+      getMyLocation();
+    }
+    if (position.latitude && position.longitude) {
+      dispatch(
+        fetchCurrenWeather({ lat: position.latitude, lon: position.longitude })
+      );
+      dispatch(
+        fetchCurrentAirPollution({
+          lat: position.latitude,
+          lon: position.longitude,
+        })
+      );
+    }
   }, [dispatch, position]);
 
   return (
