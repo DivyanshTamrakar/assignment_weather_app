@@ -18,21 +18,21 @@ const TodayHighlights = ({
   return (
     <div className="flex flex-wrap gap-x-8 mt-6">
       <DetailsCard title={"UV Index"}>
-        {airQualityIndex && (
-          <div>
-            <SemiCircleProgress
-              percentage={airQualityIndex * 10}
-              size={{
-                width: 150,
-                height: 140,
-              }}
-              strokeWidth={10}
-              strokeColor="#FAC80A"
-              strokeLinecap="butt"
-              hasBackground={true}
-            />
-          </div>
-        )}
+        (
+        <div>
+          <SemiCircleProgress
+            percentage={airQualityIndex ? airQualityIndex * 10 : 20}
+            size={{
+              width: 150,
+              height: 140,
+            }}
+            strokeWidth={10}
+            strokeColor="#FAC80A"
+            strokeLinecap="butt"
+            hasBackground={true}
+          />
+        </div>
+        )
       </DetailsCard>
       <DetailsCard title={"Wind Status"}>
         {currentData?.wind.speed && (
@@ -91,9 +91,13 @@ const TodayHighlights = ({
         <div className="text-black ">Average 🙁</div>
       </DetailsCard>
       <DetailsCard title={"Air Quality"}>
-        {airQualityIndex && (
+        {airQualityIndex ? (
           <div className="flex">
             <h1 className="text-6xl text-black">{airQualityIndex}</h1>
+          </div>
+        ) : (
+          <div className="flex">
+            <h1 className="text-6xl text-black">2</h1>
           </div>
         )}
         <div className="text-black ">Unhealthy 👎🏻</div>
